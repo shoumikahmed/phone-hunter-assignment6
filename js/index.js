@@ -76,8 +76,8 @@ const displayPhoneDetails = phone => {
             <p class="card-text">memory: ${phone.mainFeatures.memory}</p>
             <p class="card-text">storage: ${phone.mainFeatures.storage}</p>
             <p class="card-text">sensors: ${phone.mainFeatures.sensors[0]},${phone.mainFeatures.sensors[1]},${phone.mainFeatures.sensors[2]},${phone.mainFeatures.sensors[3]},${phone.mainFeatures.sensors[4]},${phone.mainFeatures.sensors[5]}</p>
-            <P class="card-title">Bluetooth: ${phone.others?.Bluetooth}, GPS: ${phone.others?.GPS}, NFC: ${phone.others?.NFC}, Radio: ${phone.others?.Radio}, USB: ${phone.others?.USB}, WLAN: ${phone.others?.WLAN}</P>
-            <p class="card-text">ReleaseDate: ${phone.releaseDate}</p>
+            <P class="card-title">others:{Bluetooth: ${phone.others?.Bluetooth ? phone.others?.Bluetooth : 'not available'}, GPS: ${phone.others?.GPS ? phone.others?.GPS : 'not available'}, NFC: ${phone.others?.NFC ? phone.others?.NFC : 'not available'}, Radio: ${phone.others?.Radio ? phone.others?.Radio : 'not available'}, USB: ${phone.others?.USB ? phone.others?.USB : 'not available'}, WLAN: ${phone.others?.WLAN ? phone.others?.WLAN : 'not available'}}</P>
+            <p class="card-text">ReleaseDate: ${phone.releaseDate ? phone.releaseDate : 'coming soon'}</p>
         </div>
     </div>
     `

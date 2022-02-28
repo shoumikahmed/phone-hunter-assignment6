@@ -12,9 +12,6 @@ const loadPhone = () => {
         searchField.value = ''
         searchResult.innerHTML = ''
     }
-    // else if (searchText != 'Samsung' || searchText != 'Iphone' || searchText != 'Oppo' || searchText != 'Huawei') {
-    //     return alert('No Result Found')
-    // }
     else {
         searchResult.innerHTML = ''
 
@@ -30,15 +27,13 @@ const loadPhone = () => {
 
 const displayPhone = phones => {
     // console.log(phones)
+    const error = document.getElementById("error");
+    if (phones.length == 0) {
+        error.innerText = "please give a valid phone name";
+    }
     const searchResult = document.getElementById('search-result')
     searchResult.textContent = ''
-    // const error = document.getElementById("error");
     phones.forEach(phone => {
-        // if (phones != phone.brand) {
-        //     error.innerText = "please give a phone name";
-        //     return
-        // }
-        // else {
         // console.log(phone)
         const div = document.createElement('div')
         div.classList.add('col-md-4')
@@ -53,7 +48,6 @@ const displayPhone = phones => {
                 </div>
             </div>`
         searchResult.appendChild(div)
-        // }
     })
 }
 

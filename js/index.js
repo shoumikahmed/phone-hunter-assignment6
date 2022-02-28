@@ -1,3 +1,6 @@
+const searchResult = document.getElementById('search-result')
+const searchField = document.getElementById('search-field')
+const searchText = searchField.value
 const loadPhone = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value
@@ -6,44 +9,51 @@ const loadPhone = () => {
     if (searchText == '' || isNaN(searchText) == false) {
         error.innerText = "please give a phone name";
         searchField.value = ''
+        searchResult.innerHTML = ''
     }
     // else if (searchText != 'Samsung' || searchText != 'Iphone' || searchText != 'Oppo' || searchText != 'Huawei') {
     //     return alert('No Result Found')
     // }
     else {
+        searchResult.innerHTML = ''
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
             .then(res => res.json())
             .then(data => displayPhone(data.data.slice(0, 20)))
+        error.innerHTML = ''
     }
 
 }
 
 const displayPhone = phones => {
     // console.log(phones)
-
     const searchResult = document.getElementById('search-result')
     searchResult.textContent = ''
-    if (searchResult == null) {
-        return alert('please input phone name')
-    }
-
+    const error = document.getElementById("error");
     phones.forEach(phone => {
+        // if (phones != phone.brand) {
+        //     error.innerText = "please give a phone name";
+        //     return
+        // }
+        // else {
         // console.log(phone)
         const div = document.createElement('div')
         div.classList.add('col-md-4')
+        div.classList.add('mt-5')
         div.innerHTML = `
-        <div class="card" style="width: 13rem;">
-            <img src="${phone.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${phone.brand}</h5>
-                <p class="card-text">${phone.phone_name}</p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-success">Details</button>
-            </div>
-        </div>`
+            <div class="card" style="width: 13rem;">
+                <img src="${phone.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Name: ${phone.phone_name}</h5>
+                    <p class="card-text">Brand Name: ${phone.brand}</p>
+                    <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-success">Details</button>
+                </div>
+            </div>`
         searchResult.appendChild(div)
+        // }
     })
 }
+
 
 const loadPhoneDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`

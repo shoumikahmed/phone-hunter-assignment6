@@ -1,12 +1,16 @@
+// global value
 const searchResult = document.getElementById('search-result')
 const searchField = document.getElementById('search-field')
 const searchText = searchField.value
 const phoneDetails = document.getElementById('phone-details')
+
+// for loading phone on website
 const loadPhone = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value
     searchField.value = ''
     const error = document.getElementById("error");
+    // error handling
     if (searchText == '' || isNaN(searchText) == false) {
         error.innerText = "please give a phone name";
         searchField.value = ''
@@ -24,10 +28,11 @@ const loadPhone = () => {
     }
 
 }
-
+// for displaying phone on website
 const displayPhone = phones => {
     // console.log(phones)
     const error = document.getElementById("error");
+    // error handling
     if (phones.length == 0) {
         error.innerText = "please give a valid phone name";
     }
@@ -52,7 +57,7 @@ const displayPhone = phones => {
     })
 }
 
-
+// for loading phone details
 const loadPhoneDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     fetch(url)
@@ -60,6 +65,7 @@ const loadPhoneDetails = phoneId => {
         .then(data => displayPhoneDetails(data.data))
 }
 
+// for displaying phone details
 const displayPhoneDetails = phone => {
     console.log(phone)
     const phoneDetails = document.getElementById('phone-details')

@@ -37,6 +37,7 @@ const displayPhone = phones => {
         // console.log(phone)
         const div = document.createElement('div')
         div.classList.add('col-md-4')
+        div.classList.add('col-lg-4')
         div.classList.add('mt-5')
         div.innerHTML = `
             <div class="card" style="width: 13rem;">
@@ -65,17 +66,18 @@ const displayPhoneDetails = phone => {
     phoneDetails.textContent = ''
     const div = document.createElement('div')
     div.classList.add('col-md-12')
+    div.classList.add('col-lg-12')
     div.classList.add('mx-auto')
     div.innerHTML = `
     <div class="card" style="width: 13rem;" >
-        <img src="${phone.image}" class="card-img-top" alt="...">
+        <img src="${phone.image ? phone.image : 'not available'}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${phone.name}</h5>
-            <p class="card-text">chipset: ${phone.mainFeatures.chipSet}</p>
-            <p class="card-text">display: ${phone.mainFeatures.displaySize}</p>
-            <p class="card-text">memory: ${phone.mainFeatures.memory}</p>
-            <p class="card-text">storage: ${phone.mainFeatures.storage}</p>
-            <p class="card-text">sensors: ${phone.mainFeatures.sensors[0]},${phone.mainFeatures.sensors[1]},${phone.mainFeatures.sensors[2]},${phone.mainFeatures.sensors[3]},${phone.mainFeatures.sensors[4]},${phone.mainFeatures.sensors[5]}</p>
+            <p class="card-text">chipset: ${phone.mainFeatures.chipSet ? phone.mainFeatures.chipSet : 'not available'}</p>
+            <p class="card-text">display: ${phone.mainFeatures.displaySize ? phone.mainFeatures.displaySize : 'not available'}</p>
+            <p class="card-text">memory: ${phone.mainFeatures.memory ? phone.mainFeatures.memory : 'not available'}</p>
+            <p class="card-text">storage: ${phone.mainFeatures.storage ? phone.mainFeatures.storage : 'not availble'}</p>
+            <p class="card-text">sensors: ${phone.mainFeatures.sensors[0] ? phone.mainFeatures.sensors[0] : 'notavailable'},${phone.mainFeatures.sensors[1] ? phone.mainFeatures.sensors[1] : 'not available'},${phone.mainFeatures.sensors[2] ? phone.mainFeatures.sensors[2] : 'not available'},${phone.mainFeatures.sensors[3] ? phone.mainFeatures.sensors[3] : 'not available'},${phone.mainFeatures.sensors[4] ? phone.mainFeatures.sensors[4] : 'not available'},${phone.mainFeatures.sensors[5] ? phone.mainFeatures.sensors[5] : 'not available'}</p>
             <P class="card-title">others:{Bluetooth: ${phone.others?.Bluetooth ? phone.others?.Bluetooth : 'not available'}, GPS: ${phone.others?.GPS ? phone.others?.GPS : 'not available'}, NFC: ${phone.others?.NFC ? phone.others?.NFC : 'not available'}, Radio: ${phone.others?.Radio ? phone.others?.Radio : 'not available'}, USB: ${phone.others?.USB ? phone.others?.USB : 'not available'}, WLAN: ${phone.others?.WLAN ? phone.others?.WLAN : 'not available'}}</P>
             <p class="card-text">ReleaseDate: ${phone.releaseDate ? phone.releaseDate : 'coming soon'}</p>
         </div>

@@ -67,7 +67,7 @@ const displayPhoneDetails = phone => {
     const div = document.createElement('div')
     div.classList.add('col-md-12')
     div.classList.add('col-lg-12')
-    div.classList.add('mx-auto')
+    // div.classList.add('mx-auto')
     div.innerHTML = `
     <div class="card" style="width: 13rem;" >
         <img src="${phone.image ? phone.image : 'not available'}" class="card-img-top" alt="...">
